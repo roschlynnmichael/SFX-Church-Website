@@ -39,6 +39,76 @@
   padding: 8px 16px;
 }
 
+.welcome-container {
+  background-color: #ffffff;
+}
+
+.welcome-text {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.quote-container {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #ffffff;
+}
+
+.quote-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.quote-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.church-image-container {
+  background-color: #f8f9fa;
+  padding: 40px 20px;
+}
+
+.church-main-image, .patron-saint-image {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.church-main-image:hover, .patron-saint-image:hover {
+  transform: scale(1.02);
+}
+
+.patron-saint-image {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.patron-saint-container {
+  background-color: #ffffff; /* Add a background color */
+  padding: 15px; /* Add padding */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.patron-saint-description {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  color: #333;
+  margin-top: 15px;
+  text-align: center; /* Center align the description */
+}
+
 @media (max-width: 991px) {
   .navbar-nav {
       padding-top: 1rem;
@@ -54,5 +124,23 @@
   .dropdown-item {
       color: rgba(0,0,0,.55);
       padding: 5px 0 5px 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .church-image-container {
+      padding: 20px 10px;
+  }
+  .patron-saint-image {
+      max-height: 200px;
+  }
+  .patron-saint-description {
+      font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .church-main-image {
+      max-width: 80%;
   }
 }

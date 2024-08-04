@@ -1,142 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Home</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='custom_css/custom_css_file.css') }}">
-        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-            <div class="container-fluid">
-                <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <span class="church-name">St. Francis Xavier Church</span>
-                </a>
-                <button
-                    data-mdb-collapse-init
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link indie-font" href="#">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link indie-font dropdown-toggle" href="#" id="ourParishDropdown">Our Parish</a>
-                            <ul class="dropdown-menu" aria-labelledby="ourParishDropdown">
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">History</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Parish Priest</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Patron Saint</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Parish Council</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Office Bearers</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Parish Information</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Previous Priests</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Golden Jubilee Celebrations</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Gallery</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link indie-font dropdown-toggle" href="#" id="dominicansDropdown">Dominicans</a>
-                            <ul class="dropdown-menu" aria-labelledby="dominicansDropdown">
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Our Work</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Prayerful Thoughts</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Donations</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link indie-font dropdown-toggle" href="#" id="associationsDropdown">Associations</a>
-                            <ul class="dropdown-menu" aria-labelledby="associationsDropdown">
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Altar Servers</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Choir</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Eucharistic Ministers</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Lectors</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Legion of Mary</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Projection Team</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Senior Citizen's Association</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Sunday School</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Society of St.Vincent De Paul</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Women's Cell</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Youth Group</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link indie-font" href="#">Communities</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link indie-font dropdown-toggle" href="#" id="contactDropdown">Contact</a>
-                            <ul class="dropdown-menu" aria-labelledby="contactDropdown">
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Calender</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Useful Resources</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item indie-font-dropdown" href="#">Parish Connections</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>St. Francis Xavier Church</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='custom_css/custom_css_file.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Indie+Flower&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <span class="church-name">St. Francis Xavier Church</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link indie-font" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link indie-font dropdown-toggle" href="#" id="ourParishDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Our Parish</a>
+                        <ul class="dropdown-menu" aria-labelledby="ourParishDropdown">
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">History</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Parish Priest</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Patron Saint</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Parish Council</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Office Bearers</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Parish Information</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Previous Priests</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Golden Jubilee Celebrations</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link indie-font dropdown-toggle" href="#" id="dominicansDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Dominicans</a>
+                        <ul class="dropdown-menu" aria-labelledby="dominicansDropdown">
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Our Work</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Prayerful Thoughts</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Donations</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link indie-font dropdown-toggle" href="#" id="associationsDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Associations</a>
+                        <ul class="dropdown-menu" aria-labelledby="associationsDropdown">
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Altar Servers</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Choir</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Eucharistic Ministers</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Lectors</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Legion of Mary</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Projection Team</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Senior Citizen's Association</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Sunday School</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Society of St.Vincent De Paul</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Women's Cell</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Youth Group</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link indie-font" href="#">Communities</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link indie-font dropdown-toggle" href="#" id="contactDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Contact</a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Calendar</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Useful Resources</a></li>
+                            <li><a class="dropdown-item indie-font-dropdown" href="#">Parish Connections</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4 welcome-container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <h1 class="welcome-text">Welcome to St.Francis Xavier Church, Parksite</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-5 quote-container">
+        <div class="row justify-content-center align-items-start">
+            <div class="col-md-7 text-center mb-4 mb-md-0">
+                <img src="{{url_for('static', filename='img/church-main-photo.jpeg')}}" alt="St. Francis Xavier Church" class="img-fluid rounded shadow-lg church-main-image">
+            </div>
+        </div>
+        <div class="container-fluid py-3">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="quote-title mb-3">Our Parish Vision</h2>
+                    <p class="quote-text">Reaching out to the needy a light of the world to foster communion.</p>
                 </div>
             </div>
-        </nav>
-        <script src="{{ url_for('static', filename='js/mdb.umd.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='custom_js/dropdown_menu.js') }}"></script>
-    </body>
+        </div>
+    </div>
+
+    
+
+    <script src="{{ url_for('static', filename='js/mdb.umd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='custom_js/dropdown_menu.js') }}"></script>
+</body>
 </html>
