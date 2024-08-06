@@ -1,3 +1,4 @@
+/* Navbar Styles */
 .navbar {
   padding: 0.5rem 1rem;
 }
@@ -31,7 +32,7 @@
 
 .dropdown-menu {
   border: none;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item {
@@ -39,6 +40,7 @@
   padding: 8px 16px;
 }
 
+/* Welcome Section */
 .welcome-container {
   background-color: #ffffff;
 }
@@ -56,14 +58,6 @@
   background-color: #ffffff;
 }
 
-.quote-title {
-  font-family: 'Caveat', cursive;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-}
-
 .quote-text {
   font-family: 'Caveat', cursive;
   font-size: 1.5rem;
@@ -73,74 +67,48 @@
   line-height: 1.6;
 }
 
-.church-image-container {
-  background-color: #f8f9fa;
-  padding: 40px 20px;
-}
-
-.church-main-image, .patron-saint-image {
+/* Image Styles */
+.church-main-image {
   max-width: 100%;
   height: auto;
   transition: transform 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.church-main-image:hover, .patron-saint-image:hover {
+.church-main-image:hover {
   transform: scale(1.02);
 }
 
-.patron-saint-image {
-  max-height: 300px;
-  object-fit: cover;
-}
-
-.patron-saint-container {
-  background-color: #ffffff; /* Add a background color */
-  padding: 15px; /* Add padding */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
-}
-
-.patron-saint-description {
-  font-family: 'Caveat', cursive;
-  font-size: 1rem;
-  color: #333;
-  margin-top: 15px;
-  text-align: center; /* Center align the description */
-}
-
+/* Media Queries */
 @media (max-width: 991px) {
   .navbar-nav {
-      padding-top: 1rem;
+    padding-top: 1rem;
   }
+
   .nav-item {
-      margin: 5px 0;
+    margin: 5px 0;
   }
+
   .dropdown-menu {
-      background-color: transparent;
-      border: none;
-      box-shadow: none;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
+
   .dropdown-item {
-      color: rgba(0,0,0,.55);
-      padding: 5px 0 5px 15px;
+    color: rgba(0, 0, 0, .55);
+    padding: 5px 0 5px 15px;
   }
 }
 
 @media (max-width: 767px) {
   .church-image-container {
-      padding: 20px 10px;
-  }
-  .patron-saint-image {
-      max-height: 200px;
-  }
-  .patron-saint-description {
-      font-size: 0.9rem;
+    padding: 20px 10px;
   }
 }
 
 @media (min-width: 768px) {
   .church-main-image {
-      max-width: 80%;
+    max-width: 80%;
   }
 }
