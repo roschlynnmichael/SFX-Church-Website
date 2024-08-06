@@ -90,7 +90,7 @@
   z-index: 1020;
 }
 
-.dataTables_filter input {
+.dataTables_wrapper .dataTables_filter input {
   font-family: 'Indie Flower', cursive !important;
   font-size: 1rem; 
   border: 1px solid #ccc; 
