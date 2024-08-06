@@ -79,6 +79,25 @@
   transform: scale(1.02);
 }
 
+.scrollable-table {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.dataTables_filter input {
+  font-family: 'Indie Flower', cursive !important;
+  font-size: 1rem; 
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  padding: 5px; 
+}
+
 /* Media Queries */
 @media (max-width: 991px) {
   .navbar-nav {

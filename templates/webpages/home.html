@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='custom_css/custom_css_file.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Indie+Flower&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
@@ -76,16 +77,84 @@
         </div>
     </nav>
 
-    <div class="container-fluid py-4 welcome-container">
+    <div class="container-fluid py-4 welcome-container h-100">
         <div class="row justify-content-center">
             <div class="col-md-10 text-center">
-                <h1 class="welcome-text">Welcome to St.Francis Xavier Church, Parksite</h1>
-                <p class="quote-text">Reaching out to the needy a light of the world to foster communion.</p>  
+                <h1 class="welcome-text indie-font">Welcome to St.Francis Xavier Church, Parksite</h1>
+                <p class="quote-text indie-font">Reaching out to the needy a light of the world to foster communion.</p>  
             </div>
             <div class="container-fluid py-5 quote-container">
                 <div class="row justify-content-center align-items-start">
                     <div class="col-md-6 text-center mb-4 mb-md-0">
                         <img src="{{url_for('static', filename='img/church-main-photo.jpeg')}}" alt="St. Francis Xavier Church Parksite" class="img-fluid rounded shadow-lg church-main-image">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="indie-font">Current Parish Priest</h3>
+                        <p class="indie-font">Fr. Jeffery D'souza</p>
+                        <h2 class="indie-font">Parish Events and Updates</h2>
+                        <div class="table-responsive scrollable-table">
+                            <table class="table">
+                                <thead class="sticky-top bg-light">
+                                    <tr>
+                                        <th class="indie-font">Event Name</th>
+                                        <th class="indie-font">Event Date</th>
+                                        <th class="indie-font">Event Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 1</td>
+                                        <td class="indie-font">01/01/2021</td>
+                                        <td class="indie-font">09:00 AM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 2</td>
+                                        <td class="indie-font">01/02/2021</td>
+                                        <td class="indie-font">10:00 AM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 3</td>
+                                        <td class="indie-font">01/03/2021</td>
+                                        <td class="indie-font">11:00 AM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 4</td>
+                                        <td class="indie-font">01/04/2021</td>
+                                        <td class="indie-font">12:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 5</td>
+                                        <td class="indie-font">01/05/2021</td>
+                                        <td class="indie-font">01:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 6</td>
+                                        <td class="indie-font">01/06/2021</td>
+                                        <td class="indie-font">02:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 7</td>
+                                        <td class="indie-font">01/07/2021</td>
+                                        <td class="indie-font">03:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 8</td>
+                                        <td class="indie-font">01/08/2021</td>
+                                        <td class="indie-font">04:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 9</td>
+                                        <td class="indie-font">01/09/2021</td>
+                                        <td class="indie-font">05:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indie-font">Dummy Event 10</td>
+                                        <td class="indie-font">01/10/2021</td>
+                                        <td class="indie-font">06:00 PM</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,5 +163,9 @@
 
     <script src="{{ url_for('static', filename='js/mdb.umd.min.js') }}"></script>
     <script src="{{ url_for('static', filename='custom_js/dropdown_menu.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="{{ url_for('static', filename='custom_js/custom_table.js')}}"></script>
+    
 </body>
 </html>
