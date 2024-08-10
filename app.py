@@ -6,7 +6,7 @@ app = Flask(__name__, static_folder = 'design_files')
 def hello_world():
     return "<p>Hello World! From Python Flask!<p>"
 
-@app.route("/home")
+@app.route("/")
 def homepage():
     return render_template("/webpages/home.html")
 
