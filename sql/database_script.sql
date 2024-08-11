@@ -30,7 +30,7 @@ CREATE TABLE parish_updates_events (
     event_time TIME NOT NULL
 );
 
---Create the admin users table
+-- Create the admin users table
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -38,9 +38,10 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
---Create the priests table
+-- Create the priests table
 CREATE TABLE priests (
     name VARCHAR(255) NOT NULL,
-    date_served DATE NOT NULL,
+    date_served_from DATE NOT NULL,
+    date_served_to DATE NOT NULL,
     is_current_parish_priest TINYINT(1) NOT NULL
 );
