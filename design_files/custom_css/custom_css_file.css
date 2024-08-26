@@ -108,6 +108,22 @@
   z-index: 1020;
 }
 
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e7e7e7;
+}
+
+.footer h5 {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  color: grey;
+  margin-bottom: 5px;
+}
+
 .dataTables_wrapper .dataTables_filter input {
   font-family: 'Indie Flower', cursive !important;
   font-size: 1rem !important; 
@@ -140,6 +156,10 @@
 @media (max-width: 767px) {
   .church-image-container {
     padding: 20px 10px;
+  }
+  .footer .col-md-6:last-child {
+    margin-top: 20px;
+    text-align: left !important;
   }
 }
 
