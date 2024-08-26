@@ -45,3 +45,8 @@ CREATE TABLE priests (
     date_served_to DATE NOT NULL,
     is_current_parish_priest TINYINT(1) NOT NULL
 );
+
+CREATE TABLE weekly_announcements (
+    ID int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    annoucement VARCHAR(1500) NOT NULL;
+)
