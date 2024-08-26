@@ -162,15 +162,36 @@
     </div>
 
     <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card h-100">
+        <div class="row d-flex">
+            <div class="col-12">
+                <div class="card patron-saint-card">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='img/st_francis_xavier.jpg')}}" class="img-fluid rounded-start shadow-lg patron-saint-image" alt="St.Francis Xavier">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title indie-font">Our Patron Saint</h5>
+                                <p class="card-text indie-font">Francis Xavier, venerated as Saint Francis Xavier, was born in Navarre, Spain. He was a Catholic missionary and saint who co-founded the Society of Jesus and, as a representative of the Portuguese Empire. The patron saint of missionaries and one of the founders of the Jesuit order, Saint Francis Xavier sought religious converts throughout Asia during the 1500s.</p>
+                                <a href="#" class="btn btn-primary indie-font">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-4">
+        <div class="row d-flex">
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card w-100">
                     <div class="card-header">
                         <h5 class="indie-font">Confession Times</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="confessionTable">
                                 <thead class="bg-light">
                                     <tr>
                                         <th class="indie-font">Confession Day</th>
@@ -180,6 +201,60 @@
                                 <tbody>
                                     <tr>
                                         <td class="indie-font">Saturday</td>
+                                        <td class="indie-font">5:00 PM - 6:00PM</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <h5 class="indie-font">Mass Timings</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="massTable">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th class="indie-font">Mass Day</th>
+                                        <th class="indie-font">Mass Time</th>
+                                        <th class="indie-font">Mass Language</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="indie-font">Saturday</td>
+                                        <td class="indie-font">5:00 PM - 6:00PM</td>
+                                        <td class="indie-font">English</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <h5 class="indie-font">Novenas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="novenaTable">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th class="indie-font">Novena Name</th>
+                                        <th class="indie-font">Novena Day</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="indie-font">Our Lady of Perpetual Succour</td>
                                         <td class="indie-font">5:00 PM - 6:00PM</td>
                                     </tr>
                                 </tbody>
