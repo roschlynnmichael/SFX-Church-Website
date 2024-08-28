@@ -10,5 +10,9 @@ def hello_world():
 def homepage():
     return render_template("/webpages/home.html")
 
+@app.route("/history")
+def historypage():
+    return render_template("/webpages/history.html")
+
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5000, debug = True)
