@@ -14,5 +14,9 @@ def homepage():
 def historypage():
     return render_template("/webpages/history.html")
 
+@app.route("/patronsaint")
+def patronsaintpage():
+    return render_template("/webpages/patronsaint.html")
+
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5000, debug = True)
