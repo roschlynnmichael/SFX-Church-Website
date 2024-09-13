@@ -48,5 +48,5 @@ CREATE TABLE priests (
 
 CREATE TABLE weekly_announcements (
     ID int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    annoucement VARCHAR(1500) NOT NULL;
-)
+    announcement VARCHAR(1500) NOT NULL
+);
