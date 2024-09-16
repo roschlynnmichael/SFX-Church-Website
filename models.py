@@ -20,3 +20,9 @@ class Masstimings(db.Model):
     Mass_Day = db.Column(db.String(255), nullable=False)
     Mass_Time = db.Column(db.String(255), nullable=False)
     Mass_Lang = db.Column(db.String(255), nullable=False)
+
+class Novena(db.Model):
+    __tablename__ = 'novenas'
+    Nov_No = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    Nov_Name = db.Column(db.String(255), nullable=False)
+    Nov_Day = db.Column(db.String(255), nullable=False)

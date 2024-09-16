@@ -26,5 +26,10 @@ CREATE TABLE mass_timings(
     Mass_Lang varchar(255) NOT NULL
 );
 
-
+-- Create the novenas table
+CREATE TABLE novenas(
+    Nov_No int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Nov_Name varchar(255) NOT NULL,
+    Nov_Day varchar(255) NOT NULL
+);
 
