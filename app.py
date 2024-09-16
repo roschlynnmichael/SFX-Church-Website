@@ -1,6 +1,13 @@
+import pymysql
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from models import db, Community, Association
 
+pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:dsouza@localhost/church_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
 
 @app.route("/hello_world_test")
 def hello_world():
@@ -17,6 +24,12 @@ def historypage():
 @app.route("/patronsaint")
 def patronsaintpage():
     return render_template("/webpages/patronsaint.html")
+
+@app.route("/parishcouncil")
+def parishcouncilpage():
+    communities = Community.query.all()
+    associations = Association.query.all()
+    return render_template("/webpages/parishcouncil.html", communities=communities, associations=associations)
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5000, debug = True)

@@ -77,46 +77,68 @@
         </div>
     </nav>
 
-    <div class="container history-container">
-        <h1 class="history-title">SAINT FRANCIS XAVIER</h1>
-        <h2 class="history-subtitle">Saint, Priest, Missionary (1506-1552)</h2>
-        <div class="row">
-            <div class="col-md-8">
+    <div class="container-fluid py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-8">
                 <div class="card mb-4">
-                    <div class="card-body history-content">
-                        <p>The patron saint of missionaries and one of the founders of the Jesuit order, Saint Francis Xavier sought religious converts throughout Asia during the 1500s. Saint Francis Xavier was born on April 7, 1506, in a castle near Sangüesa in Navarre (part of present-day Spain). With encouragement from his friend Ignatius of Loyola, Xavier devoted himself to religious service and became one of the founders of the Jesuit order. Much of his life was spent tending to missions in areas such as India and Japan. He was 46 when he died on China's Shangchuan Island on December 3, 1552.</p>
-                        <p>Early LifeOn April 7, 1506, Francis Xavier was born in Xavier Castle, located near Sangüesa, in the kingdom of Navarre (part of present-day Spain). He was a member of a noble family, and his childhood was one of privilege—however, it was disrupted by his father's death, as well as by outside efforts to take control of Navarre.</p>
-                        <p>Forming the Jesuit OrderIn 1525, Xavier went to study at the University of Paris. There, he encountered Ignatius of Loyola, who had experienced a religious conversion while recovering from a war wound. Loyola did his utmost to convince Xavier to join him on the same path of devotion.</p>
-                        <p>Though at first hesitant, Xavier was eventually inspired by his friend's example. On August 15, 1534, in the Montmartre section of Paris, Xavier, Loyola and five others pledged themselves to the Society of Jesus (the Jesuits). In addition to vows of celibacy and poverty, they also promised to visit the Holy Land.</p>
-                        <p>While waiting in Venice, Italy, to depart for the Holy Land, Xavier worked in a hospital, aiding those in need. He also became a priest, on June 24, 1537. When fighting between Venice and the Ottoman Empire made a trip to Jerusalem impossible, Xavier instead went to Rome, where he and others in the society offered their services to the pope.</p>
-                        <p>Missionary WorkImpressed by the Jesuits, King John III of Portugal asked the order for missionaries to work in his empire. Though Loyola initially selected others for the task, Xavier stepped in when a fellow priest became ill. He left Rome on March 15, 1540. Xavier arrived in Goa, India, on May 6, 1542. He came to be admired in that country for his ability to live and work side by side with the poor. Seeking more converts, Xavier continued to travel; his stops included Ceylon, the Molucca Islands, the Banda Islands and the Malay Peninsula.</p>
-                        <p>On August 15, 1549, Xavier landed at Kagoshima, Japan. As he had at his other missions, Xavier adapted to local mores and arranged for the translation of religious texts. These steps helped him reach more converts in the year and a half he spent in Japan.</p>
-                        <p>Last Mission and LegacyXavier's next focus for missionary work was China. He traveled to Sancian (Shangchuan) Island, near Canton, but was not able to access the mainland because borders had been closed to foreigners. Before he could find a way inside the country, illness incapacitated Xavier. He died on the island on December 3, 1552, at the age of 46. His body was then taken to Goa.</p>
-                        <p>Though he passed away at a relatively young age, Xavier had accomplished much in his life. In addition to being a founding member of the Jesuit order—the Society of Jesus was officially recognized by Pope Paul III in 1540—he baptized an estimated 30,000 people. Xavier was beatified by Pope Paul V in 1619, and canonized by Pope Gregory XV in 1622. A famed missionary himself, he is now the patron saint of missionaries.</p>
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="indie-font mb-0">Parish Communities</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="communityTable">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th class="indie-font">Community No</th>
+                                        <th class="indie-font">Community Name</th>
+                                        <th class="indie-font">Community Representative</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for community in communities %}
+                                    <tr>
+                                        <td class="indie-font">{{ community.Comm_No }}</td>
+                                        <td class="indie-font">{{ community.Comm_Name }}</td>
+                                        <td class="indie-font">{{ community.Rep_Name }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
+                
                 <div class="card">
-                    <div class="card-body quick-facts">
-                        <h3 class="card-title">QUICK FACTS</h3>
-                        <img src="{{url_for('static', filename='img/patronsaint_image.jpg')}}" class="card-img-top mb-3" alt="Saint Francis Xavier">
-                        <p><strong>NAME:</strong> Saint Francis Xavier</p>
-                        <p><strong>OCCUPATION:</strong> Saint, Missionary, Priest</p>
-                        <p><strong>BIRTH DATE:</strong> April 7, 1506</p>
-                        <p><strong>DEATH DATE:</strong> December 3, 1552</p>
-                        <p><strong>Did you know?</strong></p>
-                        <p>Saint Francis Xavier was one of the founding members of the Jesuit order</p>
-                        <p><strong>PLACE OF BIRTH:</strong>Xavier Castle, near Sangüesa, Navarre, Spain</p>
-                        <p><strong>PLACE OF DEATH:</strong> Shangchuan Island, China</p>
-                        <p><strong>ALIAS:</strong> San Francisco Javier, Francis Xavier, St. Francis Xavier</p>
-                        <p><strong>ORIGINALLY: </strong>Francisco de Jasso y Azpilicueta​</p>
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="indie-font mb-0">Religious Associations</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="associationTable">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th class="indie-font">Association No</th>
+                                        <th class="indie-font">Association Name</th>
+                                        <th class="indie-font">Association Representative</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for association in associations %}
+                                    <tr>
+                                        <td class="indie-font">{{ association.Ass_No }}</td>
+                                        <td class="indie-font">{{ association.Ass_Name }}</td>
+                                        <td class="indie-font">{{ association.Rep_Name }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <div class="row">
