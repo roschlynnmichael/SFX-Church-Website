@@ -251,11 +251,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for masstime in masstimes %}
                                     <tr>
-                                        <td class="indie-font">Saturday</td>
-                                        <td class="indie-font">5:00 PM - 6:00PM</td>
-                                        <td class="indie-font">English</td>
+                                        <td class="indie-font">{{ masstime.Mass_Day }}</td>
+                                        <td class="indie-font">{{ masstime.Mass_Time }}</td>
+                                        <td class="indie-font">{{ masstime.Mass_Lang }}</td>
                                     </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>

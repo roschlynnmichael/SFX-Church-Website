@@ -1,7 +1,7 @@
 import pymysql
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from models import db, Community, Association
+from models import db, Community, Association, Masstimings
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -15,7 +15,8 @@ def hello_world():
 
 @app.route("/")
 def homepage():
-    return render_template("/webpages/home.html")
+    masstimes = Masstimings.query.all()
+    return render_template("/webpages/home.html", masstimes = masstimes)
 
 @app.route("/history")
 def historypage():

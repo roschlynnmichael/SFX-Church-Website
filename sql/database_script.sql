@@ -18,3 +18,13 @@ CREATE TABLE associations(
     Rep_Name varchar(255) NOT NULL
 );
 
+-- Create the mass timings table
+CREATE TABLE mass_timings(
+    Mass_No int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Mass_Day varchar(255) NOT NULL,
+    Mass_Time varchar(255) NOT NULL,
+    Mass_Lang varchar(255) NOT NULL
+);
+
+
+
