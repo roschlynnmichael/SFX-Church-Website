@@ -33,3 +33,9 @@ CREATE TABLE novenas(
     Nov_Day varchar(255) NOT NULL
 );
 
+-- Create the weekly announcements table
+CREATE TABLE weekly_announcements(
+    ann_no INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    ann longtext NOT NULL
+);
+
