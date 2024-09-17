@@ -12,7 +12,7 @@ class Annoucementcards(db.Model):
     url_image = db.Column(db.Text, nullable=False)
 
 class Admin(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    a_id = db.Column(db.Integer, primary_key=True, nullable=False)
     a_name = db.Column(db.String(128), nullable=False)
     a_pass = db.Column(db.String(128), nullable=False)
 
