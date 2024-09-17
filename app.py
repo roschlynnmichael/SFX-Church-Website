@@ -1,7 +1,7 @@
 import pymysql
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from models import db, Community, Association, Masstimings, Novena
+from models import db, Community, Association, Masstimings, Novena, Weeklyannouncements, ParishEventsUpdates
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -17,7 +17,9 @@ def hello_world():
 def homepage():
     masstimes = Masstimings.query.all()
     novenas = Novena.query.all()
-    return render_template("/webpages/home.html", masstimes = masstimes, novenas = novenas)
+    weeklyannouncements = Weeklyannouncements.query.all()
+    parish_events_updates = ParishEventsUpdates.query.all()
+    return render_template("/webpages/home.html", masstimes = masstimes, novenas = novenas, weeklyannouncements = weeklyannouncements, parish_events_updates = parish_events_updates)
 
 @app.route("/history")
 def historypage():

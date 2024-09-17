@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <span class="church-name">St. Francis Xavier Church</span>
@@ -77,6 +77,8 @@
         </div>
     </nav>
 
+    <div style="height: 60px;"></div>
+
     <div class="container-fluid py-4 welcome-container h-100">
         <div class="row justify-content-center">
             <div class="col-md-10 text-center">
@@ -93,7 +95,7 @@
                         <p class="indie-font">Fr. Jeffery D'souza</p>
                         <h2 class="indie-font">Parish Events and Updates</h2>
                         <div class="table-responsive scrollable-table">
-                            <table class="table">
+                            <table class="table table-striped table-hover" id="eventsTable">
                                 <thead class="sticky-top bg-light">
                                     <tr>
                                         <th class="indie-font">Event Name</th>
@@ -102,56 +104,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for event in parish_events_updates %}
                                     <tr>
-                                        <td class="indie-font">Dummy Event 1</td>
-                                        <td class="indie-font">01/01/2021</td>
-                                        <td class="indie-font">09:00 AM</td>
+                                        <td class="indie-font">{{ event.Evn_Name }}</td>
+                                        <td class="indie-font">{{ event.Evn_Date.strftime('%Y-%m-%d') }}</td>
+                                        <td class="indie-font">{{ event.Evn_Time }}</td>
                                     </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 2</td>
-                                        <td class="indie-font">01/02/2021</td>
-                                        <td class="indie-font">10:00 AM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 3</td>
-                                        <td class="indie-font">01/03/2021</td>
-                                        <td class="indie-font">11:00 AM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 4</td>
-                                        <td class="indie-font">01/04/2021</td>
-                                        <td class="indie-font">12:00 PM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 5</td>
-                                        <td class="indie-font">01/05/2021</td>
-                                        <td class="indie-font">01:00 PM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 6</td>
-                                        <td class="indie-font">01/06/2021</td>
-                                        <td class="indie-font">02:00 PM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 7</td>
-                                        <td class="indie-font">01/07/2021</td>
-                                        <td class="indie-font">03:00 PM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 8</td>
-                                        <td class="indie-font">01/08/2021</td>
-                                        <td class="indie-font">04:00 PM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 9</td>
-                                        <td class="indie-font">01/09/2021</td>
-                                        <td class="indie-font">05:00 PM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="indie-font">Dummy Event 10</td>
-                                        <td class="indie-font">01/10/2021</td>
-                                        <td class="indie-font">06:00 PM</td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -191,15 +150,11 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
+                            {% for weeklyannouncement in weeklyannouncements %}
                             <li class="list-group-item indie-font">
-                                <strong>Sunday, July 9th:</strong> Special Mass for the Youth at 10:00AM
+                                <p><strong>{{ weeklyannouncement.ann_no }}.</strong> {{ weeklyannouncement.ann }}</p>
                             </li>
-                            <li class="list-group-item indie-font">
-                                <strong>Sunday, July 9th:</strong> Special Mass for the Youth at 10:00AM
-                            </li>
-                            <li class="list-group-item indie-font">
-                                <strong>Sunday, July 9th:</strong> Special Mass for the Youth at 10:00AM
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

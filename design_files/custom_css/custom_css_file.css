@@ -355,3 +355,32 @@
     padding: 0.75rem;
   }
 }
+
+.navbar-nav .dropdown-menu {
+  z-index: 1030; /* Ensure it's above other content */
+  max-height: 80vh; /* Limit height to 80% of viewport height */
+  overflow-y: auto; /* Allow scrolling if content is too long */
+  background-color: #fff; /* Ensure background is solid */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow for better visibility */
+}
+
+.navbar-nav .nav-item.dropdown {
+  position: static; /* This allows the dropdown to expand full width if needed */
+}
+
+.navbar-nav .dropdown-menu {
+  width: auto; /* Adjust width as needed */
+  left: auto;
+  right: auto;
+}
+
+/* Ensure dropdown items are visible and properly spaced */
+.navbar-nav .dropdown-item {
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
+/* Adjust main content to not overlap with navbar */
+.container-fluid.py-4 {
+  padding-top: 4rem !important; /* Adjust value as needed */
+}

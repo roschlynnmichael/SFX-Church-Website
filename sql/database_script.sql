@@ -39,3 +39,10 @@ CREATE TABLE weekly_announcements(
     ann longtext NOT NULL
 );
 
+-- Create the parish events updates table
+CREATE TABLE parish_events_updates(
+    Evn_no int PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    Evn_Date DATE NOT NULL, 
+    Evn_Time varchar(255) NOT NULL, 
+    Evn_Content longtext NOT NULL
+);

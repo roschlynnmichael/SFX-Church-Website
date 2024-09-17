@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.table').DataTable({
+    $('#eventsTable').DataTable({
         paging: true,
         searching: true,
         ordering: true,
