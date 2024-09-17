@@ -36,4 +36,4 @@ def parishcouncilpage():
     return render_template("/webpages/parishcouncil.html", communities=communities, associations=associations)
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port = 5000, debug = True)
+    app.run(host = "0.0.0.0", port = 5001, debug = True)
