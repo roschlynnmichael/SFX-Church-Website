@@ -162,19 +162,26 @@
         </div>
     </div>
 
-    <div class="card-scroll-container">
-        <div class="card-scroll">
-            {% for card in cards %}
-            <div class="card">
-                {% if card.image_url %}
-                <img src="{{ card.image_url }}" class="card-img-top" alt="{{ card.title }}">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ card.title }}</h5>
-                    <p class="card-text">{{ card.content }}</p>
+    <div class="container-fluid py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center mb-4 indie-font">Announcements</h2>
+                <div class="card-scroll-container">
+                    <div class="card-scroll">
+                        {% for card in cards %}
+                        <div class="card announcement-card">
+                            {% if card.image_url %}
+                            <img src="{{ url_for('serve_upload', filename=card.image_url.split('/')[-1]) }}" class="card-img-top" alt="{{ card.title }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title indie-font">{{ card.title }}</h5>
+                                <p class="card-text indie-font">{{ card.content }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 

@@ -386,24 +386,77 @@
 }
 
 .card-scroll-container {
-  width: 100%;
+  width: 95%; /* Reduced from 100% to add some margin on the sides */
+  margin: 0 auto; /* Center the container */
   overflow-x: auto;
-  margin: 20px 0;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background to match other sections */
+  border: 2px solid #007bff; /* Primary color border */
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-scroll {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: nowrap;
   gap: 20px;
-  padding: 10px 0;
+  padding: 10px; /* Add some padding inside the scroll area */
 }
 
-.card-scroll .card {
+.announcement-card {
   flex: 0 0 auto;
-  width: 250px;  /* Adjust as needed */
-  margin-bottom: 0;
+  width: 300px;
+  max-width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #dee2e6; /* Subtle border for each card */
 }
 
-.card-scroll .card img {
-  max-width: 100%;
-  height: auto;
+.announcement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Enhance scrollbar styling */
+.card-scroll-container::-webkit-scrollbar {
+  height: 10px;
+}
+
+.card-scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.card-scroll-container::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 5px;
+}
+
+.card-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
+
+/* Add a decorative element to the container */
+.card-scroll-container::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 20px;
+  background-color: #007bff;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Style the "Announcements" heading */
+.announcements-heading {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }

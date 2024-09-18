@@ -1,5 +1,6 @@
 import pymysql
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, send_from_directory
+import os
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Community, Association, Masstimings, Novena, Weeklyannouncements, ParishEventsUpdates
 from models import Annoucementcards
@@ -14,13 +15,18 @@ db.init_app(app)
 def hello_world():
     return "<p>Hello World! From Python Flask!<p>"
 
+@app.route('/uploads/<path:filename>')
+def serve_upload(filename):
+    uploads_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads')
+    return send_from_directory(uploads_dir, filename)
+
 @app.route("/")
 def homepage():
     masstimes = Masstimings.query.all()
     novenas = Novena.query.all()
     weeklyannouncements = Weeklyannouncements.query.all()
     parish_events_updates = ParishEventsUpdates.query.all()
-    cards = Annoucementcards.query.all()
+    cards = Annoucementcards.query.order_by(Annoucementcards.ann_id.desc()).all()
     return render_template("/webpages/home.html", masstimes = masstimes, novenas = novenas, weeklyannouncements = weeklyannouncements, parish_events_updates = parish_events_updates, cards = cards)
 
 @app.route("/history")

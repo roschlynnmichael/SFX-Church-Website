@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -14,7 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:dsouza@localhost/c
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
-UPLOAD_FOLDER = 'design_files/uploads'
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -27,6 +27,11 @@ def allowed_file(filename):
 @login_manager.user_loader
 def load_user(user_id):
     return Admin.query.get(int(user_id))
+
+@app.route("/uploads/<path:filename>")
+def serve_upload(filename):
+    uploads_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads')
+    return send_from_directory(uploads_dir, filename)
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
@@ -69,7 +74,7 @@ def add_card():
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
-            image_url = url_for('static', filename=f'uploads/{filename}')
+            image_url = f'uploads/{filename}'
             
             new_card = Annoucementcards(title=title, content=content, image_url=image_url)
             db.session.add(new_card)
