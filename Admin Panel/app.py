@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -108,10 +109,25 @@ def edit_card(card_id):
 @app.route("/admin/delete_card/<int:card_id>")
 @login_required
 def delete_card(card_id):
-    card = Annoucementcards.query.get_or_404(card_id)
-    db.session.delete(card)
-    db.session.commit()
-    flash('Card deleted successfully', 'success')
+    try:
+        with db.session.begin_nested():
+            card = Annoucementcards.query.get_or_404(card_id)
+            if card.image_url:
+                image_path = os.path.join(app.config['UPLOAD_FOLDER'], card.image_url.split('/')[-1])
+                if os.path.exists(image_path):
+                    os.remove(image_path)
+            db.session.delete(card)
+            remaining_cards = Annoucementcards.query.filter(Annoucementcards.ann_id > card_id).order_by(Annoucementcards.ann_id).all()
+            for index, remaining_card in enumerate(remaining_cards):
+                remaining_card.ann_id = index
+        db.session.commit()
+        if Annoucementcards.query.count() == 0:
+            with db.engine.connect() as conn:
+                conn.execute(text("ALTER TABLE announcement_cards AUTO_INCREMENT = 1"))
+        flash('Card deleted successfully and refactored IDs', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Error deleting card: {str(e)}', 'error')
     return redirect(url_for('admin_cards'))
 
 if __name__ == "__main__":
