@@ -187,86 +187,80 @@
 
     <div class="container-fluid py-4 tables-container">
         <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card">
+            <div class="col-md-4">
+                <div class="card table-card">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="indie-font mb-0">Confession Times</h5>
+                        <h5 class="mb-0 indie-font">Confession Times</h5>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table" id="confessionTable">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th class="indie-font">Confession Day</th>
-                                        <th class="indie-font">Confession Time</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="indie-font">Saturday</td>
-                                        <td class="indie-font">5:00 PM - 6:00PM</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table table-striped indie-font">
+                            <thead>
+                                <tr>
+                                    <th>Confession Day</th>
+                                    <th>Confession Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for confession in confessions %}
+                                <tr>
+                                    <td>{{ confession.Confession_Day }}</td>
+                                    <td>{{ confession.Confession_Time }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-    
-            <div class="col-md-4 mb-4">
-                <div class="card">
+            <div class="col-md-4">
+                <div class="card table-card">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="indie-font mb-0">Mass Timings</h5>
+                        <h5 class="mb-0 indie-font">Mass Timings</h5>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table" id="massTable">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th class="indie-font">Mass Day</th>
-                                        <th class="indie-font">Mass Time</th>
-                                        <th class="indie-font">Mass Language</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for masstime in masstimes %}
-                                    <tr>
-                                        <td class="indie-font">{{ masstime.Mass_Day }}</td>
-                                        <td class="indie-font">{{ masstime.Mass_Time }}</td>
-                                        <td class="indie-font">{{ masstime.Mass_Lang }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table table-striped indie-font">
+                            <thead>
+                                <tr>
+                                    <th>Mass Day</th>
+                                    <th>Mass Time</th>
+                                    <th>Mass Language</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for mass in masstimes %}
+                                <tr>
+                                    <td>{{ mass.Mass_Day }}</td>
+                                    <td>{{ mass.Mass_Time }}</td>
+                                    <td>{{ mass.Mass_Lang }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-    
-            <div class="col-md-4 mb-4">
-                <div class="card">
+            <div class="col-md-4">
+                <div class="card table-card">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="indie-font mb-0">Novenas</h5>
+                        <h5 class="mb-0 indie-font">Novenas</h5>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table" id="novenaTable">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th class="indie-font">Novena Name</th>
-                                        <th class="indie-font">Novena Day</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for novena in novenas %}
-                                    <tr>
-                                        <td class="indie-font">{{ novena.Nov_Name }}</td>
-                                        <td class="indie-font">{{ novena.Nov_Day }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table table-striped indie-font">
+                            <thead>
+                                <tr>
+                                    <th>Novena Name</th>
+                                    <th>Novena Day</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for novena in novenas %}
+                                <tr>
+                                    <td>{{ novena.Nov_Name }}</td>
+                                    <td>{{ novena.Nov_Day }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

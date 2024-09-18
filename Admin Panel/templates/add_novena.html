@@ -1,0 +1,15 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Add New Novena</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="Nov_Name">Name</label>
+        <input type="text" class="form-control" id="Nov_Name" name="Nov_Name" required>
+    </div>
+    <div class="form-group">
+        <label for="Nov_Day">Day</label>
+        <input type="text" class="form-control" id="Nov_Day" name="Nov_Day" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Novena</button>
+</form>
+{% endblock %}

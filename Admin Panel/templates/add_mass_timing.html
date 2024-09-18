@@ -1,0 +1,19 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Add New Mass Timing</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="Mass_Day">Day</label>
+        <input type="text" class="form-control" id="Mass_Day" name="Mass_Day" required>
+    </div>
+    <div class="form-group">
+        <label for="Mass_Time">Time</label>
+        <input type="text" class="form-control" id="Mass_Time" name="Mass_Time" required>
+    </div>
+    <div class="form-group">
+        <label for="Mass_Lang">Language</label>
+        <input type="text" class="form-control" id="Mass_Lang" name="Mass_Lang" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Mass Timing</button>
+</form>
+{% endblock %}

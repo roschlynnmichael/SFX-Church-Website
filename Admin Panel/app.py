@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import pymysql
 import os
-from models import db, Annoucementcards, Admin
+from models import db, Annoucementcards, Admin, Masstimings, Novena
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -129,6 +129,93 @@ def delete_card(card_id):
         db.session.rollback()
         flash(f'Error deleting card: {str(e)}', 'error')
     return redirect(url_for('admin_cards'))
+
+# Mass Timings CRUD operations
+@app.route("/admin/mass_timings")
+@login_required
+def admin_mass_timings():
+    mass_timings = Masstimings.query.all()
+    return render_template("admin_mass_timings.html", mass_timings=mass_timings)
+
+@app.route("/admin/add_mass_timing", methods=['GET', 'POST'])
+@login_required
+def add_mass_timing():
+    if request.method == 'POST':
+        new_mass = Masstimings(
+            Mass_Day=request.form['Mass_Day'],
+            Mass_Time=request.form['Mass_Time'],
+            Mass_Lang=request.form['Mass_Lang']
+        )
+        db.session.add(new_mass)
+        db.session.commit()
+        flash('New Mass Timing added successfully', 'success')
+        return redirect(url_for('admin_mass_timings'))
+    return render_template("add_mass_timing.html")
+
+@app.route("/admin/edit_mass_timing/<int:Mass_No>", methods=['GET', 'POST'])
+@login_required
+def edit_mass_timing(Mass_No):
+    mass = Masstimings.query.get_or_404(Mass_No)
+    if request.method == 'POST':
+        mass.Mass_Day = request.form['Mass_Day']
+        mass.Mass_Time = request.form['Mass_Time']
+        mass.Mass_Lang = request.form['Mass_Lang']
+        db.session.commit()
+        flash('Mass Timing updated successfully', 'success')
+        return redirect(url_for('admin_mass_timings'))
+    return render_template("edit_mass_timing.html", mass=mass)
+
+@app.route("/admin/delete_mass_timing/<int:Mass_No>")
+@login_required
+def delete_mass_timing(Mass_No):
+    mass = Masstimings.query.get_or_404(Mass_No)
+    db.session.delete(mass)
+    db.session.commit()
+    flash('Mass Timing deleted successfully', 'success')
+    return redirect(url_for('admin_mass_timings'))
+
+# Novenas CRUD operations
+@app.route("/admin/novenas")
+@login_required
+def admin_novenas():
+    novenas = Novena.query.all()
+    return render_template("admin_novenas.html", novenas=novenas)
+
+@app.route("/admin/add_novena", methods=['GET', 'POST'])
+@login_required
+def add_novena():
+    if request.method == 'POST':
+        new_novena = Novena(
+            Nov_Name=request.form['Nov_Name'],
+            Nov_Day=request.form['Nov_Day']
+        )
+        db.session.add(new_novena)
+        db.session.commit()
+        flash('New Novena added successfully', 'success')
+        return redirect(url_for('admin_novenas'))
+    return render_template("add_novena.html")
+
+@app.route("/admin/edit_novena/<int:Nov_No>", methods=['GET', 'POST'])
+@login_required
+def edit_novena(Nov_No):
+    novena = Novena.query.get_or_404(Nov_No)
+    if request.method == 'POST':
+        novena.Nov_Name = request.form['Nov_Name']
+        novena.Nov_Day = request.form['Nov_Day']
+        db.session.commit()
+        flash('Novena updated successfully', 'success')
+        return redirect(url_for('admin_novenas'))
+    return render_template("edit_novena.html", novena=novena)
+
+@app.route("/admin/delete_novena/<int:Nov_No>")
+@login_required
+def delete_novena(Nov_No):
+    novena = Novena.query.get_or_404(Nov_No)
+    db.session.delete(novena)
+    db.session.commit()
+    flash('Novena deleted successfully', 'success')
+    return redirect(url_for('admin_novenas'))
+
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5002, debug = True)
