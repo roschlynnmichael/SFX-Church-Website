@@ -9,7 +9,7 @@ class Annoucementcards(db.Model):
     ann_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    url_image = db.Column(db.Text, nullable=False)
+    image_url = db.Column(db.Text, nullable=False)
 
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin_user'
