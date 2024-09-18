@@ -162,6 +162,22 @@
         </div>
     </div>
 
+    <div class="card-scroll-container">
+        <div class="card-scroll">
+            {% for card in cards %}
+            <div class="card">
+                {% if card.image_url %}
+                <img src="{{ card.image_url }}" class="card-img-top" alt="{{ card.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.title }}</h5>
+                    <p class="card-text">{{ card.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
     <div class="container-fluid py-4 tables-container">
         <div class="row">
             <div class="col-md-4 mb-4">

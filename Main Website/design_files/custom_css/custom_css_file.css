@@ -384,3 +384,26 @@
 .container-fluid.py-4 {
   padding-top: 4rem !important; /* Adjust value as needed */
 }
+
+.card-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.card-scroll {
+  display: inline-flex;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.card-scroll .card {
+  flex: 0 0 auto;
+  width: 250px;  /* Adjust as needed */
+  margin-bottom: 0;
+}
+
+.card-scroll .card img {
+  max-width: 100%;
+  height: auto;
+}

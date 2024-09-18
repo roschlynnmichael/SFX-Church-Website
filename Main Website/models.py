@@ -39,3 +39,9 @@ class ParishEventsUpdates(db.Model):
     Evn_Date = db.Column(db.Date, nullable=False)
     Evn_Time = db.Column(db.String(255), nullable=False)
 
+class Annoucementcards(db.Model):
+    __tablename__ = 'announcement_cards'
+    ann_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(255), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    image_url = db.Column(db.Text, nullable=False)

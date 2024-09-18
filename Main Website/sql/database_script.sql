@@ -46,3 +46,11 @@ CREATE TABLE parish_events_updates(
     Evn_Time varchar(255) NOT NULL, 
     Evn_Content longtext NOT NULL
 );
+
+-- Create the announcement_cards table
+CREATE TABLE announcement_cards(
+    ann_id int NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    title varchar(255) NOT NULL, 
+    content LONGTEXT NOT NULL, 
+    image_url LONGTEXT NOT NULL
+);
