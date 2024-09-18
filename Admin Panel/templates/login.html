@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="vh-100" style="background: linear-gradient(to right, #1e3c72, #2a5298);">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card text-white" style="border-radius: 1rem; background: rgba(41, 82, 164, 0.8);">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">LOGIN</h2>
+              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+              <form method="POST">
+                <div class="form-outline form-white mb-4">
+                  <input type="text" id="username" name="username" class="form-control form-control-lg custom-input" required />
+                  <label class="form-label" for="username">Username</label>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="password" name="password" class="form-control form-control-lg custom-input" required />
+                  <label class="form-label" for="password">Password</label>
+                </div>
+
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" 
+                        style="background-color: #1e3c72; border-color: #1e3c72;">Login</button>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .custom-input {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+  .custom-input:focus {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+  }
+  .form-outline label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .form-outline .form-control:focus ~ .form-label,
+  .form-outline .form-control:not(:placeholder-shown) ~ .form-label {
+    color: white;
+    background-color: rgba(41, 82, 164, 0.8);
+    padding: 0 5px;
+    transform: translateY(-1rem) translateY(0.1rem) scale(0.8);
+  }
+  .form-outline .form-control:-webkit-autofill,
+  .form-outline .form-control:-webkit-autofill:hover,
+  .form-outline .form-control:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.1) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+</style>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      {% for message in messages %}
+        <div class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              {{ message }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-mdb-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    const toastList = toastElList.map(function (toastEl) {
+      return new mdb.Toast(toastEl, {
+        autohide: true,
+        delay: 5000
+      })
+    })
+    toastList.forEach(toast => toast.show())
+  });
+</script>
+{% endblock %}

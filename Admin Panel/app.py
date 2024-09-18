@@ -6,7 +6,7 @@ import pymysql
 from models import db, Annoucementcards, Admin
 
 pymysql.install_as_MySQLdb()
-app = Flask(__name__)
+app = Flask(__name__, static_folder = 'design_files')
 app.config['SECRET_KEY'] = "\xe0\tC\xfb[\xa62\xdd\xb8pQ\xe6\x8a\xe7\x87\xe7\x94\x0f2\xd0\xe1\xfa\xe9Q\x06a\xab\xecy\x80\x10\xe2"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:dsouza@localhost/church_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

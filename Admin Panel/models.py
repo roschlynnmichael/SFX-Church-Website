@@ -12,9 +12,14 @@ class Annoucementcards(db.Model):
     url_image = db.Column(db.Text, nullable=False)
 
 class Admin(UserMixin, db.Model):
-    a_id = db.Column(db.Integer, primary_key=True, nullable=False)
-    a_name = db.Column(db.String(128), nullable=False)
-    a_pass = db.Column(db.String(128), nullable=False)
+    __tablename__ = 'admin_user'
+
+    a_id = db.Column(db.Integer, primary_key=True)
+    a_name = db.Column(db.String(128), unique=True, nullable=False)
+    a_pass = db.Column(db.String(255), nullable=False)
+
+    def get_id(self):
+        return str(self.a_id)
 
     def set_password(self, password):
         self.a_pass = generate_password_hash(password)
