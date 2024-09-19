@@ -8,6 +8,7 @@ import pymysql
 import datetime
 import os
 from models import db, Annoucementcards, Admin, Masstimings, Novena, Weeklyannouncements, ParishEventUpdates
+from models import Association, Community
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -300,6 +301,92 @@ def delete_parish_event(Evn_no):
     flash('Parish Event deleted successfully', 'success')
     return redirect(url_for('admin_parish_events'))
         
+@app.route("/admin/associations")
+@login_required
+def admin_associations():
+    associations = Association.query.all()
+    return render_template("admin_associations.html", associations=associations)
+
+@app.route("/admin/add_association", methods=['GET', 'POST'])
+@login_required
+def add_association():
+    if request.method == 'POST':
+        ass_name = request.form.get('Ass_Name')
+        rep_name = request.form.get('Rep_Name')
+        
+        if not ass_name or not rep_name:
+            flash('Both Association Name and Representative Name are required.', 'error')
+            return redirect(url_for('add_association'))
+        
+        new_association = Association(
+            Ass_Name=ass_name,
+            Rep_Name=rep_name
+        )
+        db.session.add(new_association)
+        db.session.commit()
+        flash('New association added successfully', 'success')
+        return redirect(url_for('admin_associations'))
+    return render_template("add_association.html")
+
+@app.route("/admin/edit_association/<int:Ass_No>", methods=['GET', 'POST'])
+@login_required
+def edit_association(Ass_No):
+    association = Association.query.get_or_404(Ass_No)
+    if request.method == 'POST':
+        association.Ass_Name = request.form['ass_name']
+        association.Rep_Name = request.form['rep_name']
+        db.session.commit()
+        flash('Association updated successfully', 'success')
+        return redirect(url_for('admin_associations'))
+    return render_template("edit_association.html", association=association)
+
+@app.route("/admin/delete_association/<int:Ass_No>")
+@login_required
+def delete_association(Ass_No):
+    association = Association.query.get_or_404(Ass_No)
+    db.session.delete(association)
+    db.session.commit()
+    flash('Association deleted successfully', 'success')
+    return redirect(url_for('admin_associations'))
+
+@app.route("/admin/communities")
+@login_required
+def admin_communities():
+    communities = Community.query.all()
+    return render_template("admin_communities.html", communities=communities)
+
+@app.route("/admin/add_community", methods=['GET', 'POST'])
+@login_required
+def add_community():
+    if request.method == 'POST':
+        new_community = Community(Comm_Name=request.form['comm_name'], Rep_Name=request.form['rep_name'])
+        db.session.add(new_community)
+        db.session.commit()
+        flash('New community added successfully', 'success')
+        return redirect(url_for('admin_communities'))
+    return render_template("add_community.html")
+
+@app.route("/admin/edit_community/<int:Comm_No>", methods=['GET', 'POST'])
+@login_required
+def edit_community(Comm_No):
+    community = Community.query.get_or_404(Comm_No)
+    if request.method == 'POST':
+        community.Comm_Name = request.form['comm_name']
+        community.Rep_Name = request.form['rep_name']
+        db.session.commit()
+        flash('Community updated successfully', 'success')
+        return redirect(url_for('admin_communities'))
+    return render_template("edit_community.html", community=community)
+
+@app.route("/admin/delete_community/<int:Comm_No>")
+@login_required
+def delete_community(Comm_No):
+    community = Community.query.get_or_404(Comm_No)
+    db.session.delete(community)
+    db.session.commit()
+    flash('Community deleted successfully', 'success')
+    return redirect(url_for('admin_communities'))
+
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5002, debug = True)

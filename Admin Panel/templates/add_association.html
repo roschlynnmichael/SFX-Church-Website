@@ -1,0 +1,15 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Add New Association</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="Ass_Name">Association Name</label>
+        <input type="text" class="form-control" id="Ass_Name" name="Ass_Name" required>
+    </div>
+    <div class="form-group">
+        <label for="Rep_Name">Representative Name</label>
+        <input type="text" class="form-control" id="Rep_Name" name="Rep_Name" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Association</button>
+</form>
+{% endblock %}

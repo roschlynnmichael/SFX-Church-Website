@@ -36,6 +36,18 @@ class ParishEventUpdates(db.Model):
     Evn_Date = db.Column(db.Date, nullable = False)
     Evn_Time = db.Column(db.String(255), nullable = False)
 
+class Association(db.Model):
+    __tablename__ = 'associations'
+    Ass_No = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    Ass_Name = db.Column(db.String(255), nullable = False)
+    Rep_Name = db.Column(db.String(255), nullable = False)
+
+class Community(db.Model):
+    __tablename__ = 'communities'
+    Comm_No = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    Comm_Name = db.Column(db.String(255), nullable = False)
+    Rep_Name = db.Column(db.String(255), nullable = False)
+
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin_user'
 

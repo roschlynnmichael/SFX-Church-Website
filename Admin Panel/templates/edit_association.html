@@ -1,0 +1,15 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Edit Association</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="ass_name">Association Name</label>
+        <input type="text" class="form-control" id="ass_name" name="ass_name" value="{{ association.Ass_Name }}" required>
+    </div>
+    <div class="form-group">
+        <label for="rep_name">Representative Name</label>
+        <input type="text" class="form-control" id="rep_name" name="rep_name" value="{{ association.Rep_Name }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Association</button>
+</form>
+{% endblock %}
