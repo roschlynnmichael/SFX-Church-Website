@@ -24,6 +24,11 @@ class Novena(db.Model):
     Nov_Name = db.Column(db.String(255), nullable=False)
     Nov_Day = db.Column(db.String(255), nullable=False)
 
+class Weeklyannouncements(db.Model):
+    __tablename__ = 'weekly_announcements'
+    ann_no = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    ann = db.Column(db.Text, nullable=False)
+
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin_user'
 

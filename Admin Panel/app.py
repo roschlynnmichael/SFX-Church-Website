@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import pymysql
 import os
-from models import db, Annoucementcards, Admin, Masstimings, Novena
+from models import db, Annoucementcards, Admin, Masstimings, Novena, Weeklyannouncements
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -174,7 +174,44 @@ def delete_mass_timing(Mass_No):
     flash('Mass Timing deleted successfully', 'success')
     return redirect(url_for('admin_mass_timings'))
 
-# Novenas CRUD operations
+@app.route("/admin/weekly_announcements")
+@login_required
+def admin_weekly_announcements():
+    announcements = Weeklyannouncements.query.all()
+    return render_template("admin_weekly_announcements.html", announcements=announcements)
+
+@app.route("/admin/add_weekly_announcement", methods=['GET', 'POST'])
+@login_required
+def add_weekly_announcement():
+    if request.method == 'POST':
+        announcement = request.form['announcement']
+        new_announcement = Weeklyannouncements(ann=announcement)
+        db.session.add(new_announcement)
+        db.session.commit()
+        flash('New weekly announcement added successfully', 'success')
+        return redirect(url_for('admin_weekly_announcements'))
+    return render_template("add_weekly_announcement.html")
+
+@app.route("/admin/edit_weekly_announcement/<int:ann_no>", methods=['GET', 'POST'])
+@login_required
+def edit_weekly_announcement(ann_no):
+    announcement = Weeklyannouncements.query.get_or_404(ann_no)
+    if request.method == 'POST':
+        announcement.ann = request.form['announcement']
+        db.session.commit()
+        flash("Edit successful", 'success')
+        return redirect(url_for('admin_weekly_announcements'))
+    return render_template("edit_weekly_announcement.html", announcement=announcement)
+
+@app.route("/admin/delete_weekly_announcement/<int:ann_no>")
+@login_required
+def delete_weekly_announcement(ann_no):
+    announcement = Weeklyannouncements.query.get_or_404(ann_no)
+    db.session.delete(announcement)
+    db.session.commit()
+    flash("Deletion successful", 'success')
+    return redirect(url_for('admin_weekly_announcements'))
+
 @app.route("/admin/novenas")
 @login_required
 def admin_novenas():

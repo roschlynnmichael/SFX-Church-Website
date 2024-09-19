@@ -1,0 +1,11 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Edit Weekly Announcement</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="announcement">Announcement</label>
+        <textarea class="form-control" id="announcement" name="announcement" rows="5" required>{{ announcement.ann }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Announcement</button>
+</form>
+{% endblock %}
