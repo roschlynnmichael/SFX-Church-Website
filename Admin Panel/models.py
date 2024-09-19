@@ -29,6 +29,13 @@ class Weeklyannouncements(db.Model):
     ann_no = db.Column(db.Integer, primary_key=True, autoincrement=True)
     ann = db.Column(db.Text, nullable=False)
 
+class ParishEventUpdates(db.Model):
+    __tablename__ = 'parish_events_updates'
+    Evn_no = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    Evn_Name = db.Column(db.String(255), nullable = False)
+    Evn_Date = db.Column(db.Date, nullable = False)
+    Evn_Time = db.Column(db.String(255), nullable = False)
+
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin_user'
 

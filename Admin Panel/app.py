@@ -5,8 +5,9 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import pymysql
+import datetime
 import os
-from models import db, Annoucementcards, Admin, Masstimings, Novena, Weeklyannouncements
+from models import db, Annoucementcards, Admin, Masstimings, Novena, Weeklyannouncements, ParishEventUpdates
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -253,6 +254,52 @@ def delete_novena(Nov_No):
     flash('Novena deleted successfully', 'success')
     return redirect(url_for('admin_novenas'))
 
+@app.route("/admin/parish_events")
+@login_required
+def admin_parish_events():
+    events = ParishEventUpdates.query.all()
+    return render_template("admin_parish_events.html", events=events)
+
+@app.route("/admin/add_parish_event", methods=['GET', 'POST'])
+@login_required
+def add_parish_event():
+    if request.method == 'POST':
+        event_name = request.form['event_name']
+        event_date = request.form['event_date']
+        event_time = request.form['event_time']
+        new_event = ParishEventUpdates(
+            Evn_Name = event_name,
+            Evn_Date = event_date,
+            Evn_Time = event_time
+        )
+        db.session.add(new_event)
+        db.session.commit()
+        flash('New Parish Event added successfully', 'success')
+        return redirect(url_for('admin_parish_events'))
+    return render_template("add_parish_event.html")
+
+@app.route("/admin/edit_parish_event/<int:Evn_no>", methods=['GET', 'POST'])
+@login_required
+def edit_parish_event(Evn_no):
+    event = ParishEventUpdates.query.get_or_404(Evn_no)
+    if request.method == 'POST':
+        event.Evn_Name = request.form['event_name']
+        event.Evn_Date = datetime.strptime(request.form['event_date'], '%Y-%m-%d').date()
+        event.Evn_Time = request.form['event_time']
+        db.session.commit()
+        flash('Parish Event updated successfully', 'success')
+        return redirect(url_for('admin_parish_events'))
+    return render_template("edit_parish_event.html", event=event)
+
+@app.route("/admin/delete_parish_event/<int:Evn_no>")
+@login_required
+def delete_parish_event(Evn_no):
+    event = ParishEventUpdates.query.get_or_404(Evn_no)
+    db.session.delete(event)
+    db.session.commit()
+    flash('Parish Event deleted successfully', 'success')
+    return redirect(url_for('admin_parish_events'))
+        
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5002, debug = True)

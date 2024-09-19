@@ -1,0 +1,19 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Edit Parish Event</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="event_name">Event Name</label>
+        <input type="text" class="form-control" id="event_name" name="event_name" value="{{ event.Evn_Name }}" required>
+    </div>
+    <div class="form-group">
+        <label for="event_date">Event Date</label>
+        <input type="date" class="form-control" id="event_date" name="event_date" value="{{ event.Evn_Date.strftime('%Y-%m-%d') }}" required>
+    </div>
+    <div class="form-group">
+        <label for="event_time">Event Time</label>
+        <input type="text" class="form-control" id="event_time" name="event_time" value="{{ event.Evn_Time }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Event</button>
+</form>
+{% endblock %}
