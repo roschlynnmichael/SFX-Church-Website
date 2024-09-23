@@ -37,6 +37,14 @@ def historypage():
 def patronsaintpage():
     return render_template("/webpages/patronsaint.html")
 
+@app.route("/parishinformation")
+def parishinformationpage():
+    return render_template("/webpages/parishinformation.html")
+
+@app.route("/previouspriests")
+def previouspriestspage():
+    return render_template("/webpages/previouspriests.html")
+
 @app.route("/parishcouncil")
 def parishcouncilpage():
     communities = Community.query.all()

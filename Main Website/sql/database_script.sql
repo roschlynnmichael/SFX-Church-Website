@@ -54,3 +54,10 @@ CREATE TABLE announcement_cards(
     content LONGTEXT NOT NULL, 
     image_url LONGTEXT NOT NULL
 );
+
+-- Create the list of priests table
+CREATE TABLE parish_priests(
+    p_id int NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    p_incharge VARCHAR(255) NOT NULL, 
+    tenure VARCHAR(255) NOT NULL
+);
