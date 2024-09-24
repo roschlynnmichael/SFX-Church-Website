@@ -1,0 +1,16 @@
+{% extends "admin_dashboard.html" %}
+
+{% block content %}
+<h1 class="mb-4">Edit Gallery</h1>
+<form method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ gallery.title }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="link" class="form-label">Google Photos Link</label>
+        <input type="url" class="form-control" id="link" name="link" value="{{ gallery.link }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Gallery</button>
+</form>
+{% endblock %}

@@ -61,3 +61,10 @@ CREATE TABLE parish_priests(
     p_incharge VARCHAR(255) NOT NULL, 
     tenure VARCHAR(255) NOT NULL
 );
+
+--Create the gallery table
+CREATE TABLE gallery_links(
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    title varchar(255) not null, 
+    link LONGTEXT NOT NULL
+);

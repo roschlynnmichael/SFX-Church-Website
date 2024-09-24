@@ -55,6 +55,12 @@ class ParishPriests(db.Model):
     tenure = db.Column(db.String(255), nullable = False)
     def __repr__(self):
         return f'<ParishPriests {self.p_incharge}>'
+    
+class Gallery(db.Model):
+    __tablename__ = 'gallery_links'
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    title = db.Column(db.String(255), nullable = False)
+    link = db.Column(db.Text, nullable = False)
 
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin_user'

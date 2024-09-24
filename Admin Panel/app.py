@@ -8,7 +8,7 @@ import pymysql
 import datetime
 import os
 from models import db, Annoucementcards, Admin, Masstimings, Novena, Weeklyannouncements, ParishEventUpdates
-from models import Association, Community, ParishPriests
+from models import Association, Community, ParishPriests, Gallery
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -426,6 +426,47 @@ def delete_parish_priest(p_id):
     db.session.commit()
     flash('Parish priest deleted successfully', 'success')
     return redirect(url_for('admin_parish_priests'))
+
+@app.route("/admin/gallery")
+@login_required
+def admin_gallery():
+    galleries = Gallery.query.all()
+    return render_template("admin_gallery.html", galleries=galleries)
+
+@app.route("/admin/add_gallery", methods=['GET', 'POST'])
+@login_required
+def add_gallery():
+    if request.method == 'POST':
+        title = request.form['title']
+        link = request.form['link']
+        new_gallery = Gallery(title=title, link=link)
+        db.session.add(new_gallery)
+        db.session.commit()
+        flash('New gallery added successfully', 'success')
+        return redirect(url_for('admin_gallery'))
+    return render_template("add_gallery.html")
+
+@app.route("/admin/edit_gallery/<int:id>", methods=['GET', 'POST'])
+@login_required
+def edit_gallery(id):
+    gallery = Gallery.query.get_or_404(id)
+    if request.method == 'POST':
+        gallery.title = request.form['title']
+        gallery.link = request.form['link']
+        db.session.commit()
+        flash('Gallery updated successfully', 'success')
+        return redirect(url_for('admin_gallery'))
+    return render_template("edit_gallery.html", gallery=gallery)
+
+@app.route("/admin/delete_gallery/<int:id>")
+@login_required
+def delete_gallery(id):
+    gallery = Gallery.query.get_or_404(id)
+    db.session.delete(gallery)
+    db.session.commit()
+    flash('Gallery deleted successfully', 'success')
+    return redirect(url_for('admin_gallery'))
+
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5002, debug = True)
