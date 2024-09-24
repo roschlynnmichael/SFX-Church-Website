@@ -1,0 +1,15 @@
+{% extends "admin_dashboard.html" %}
+{% block content %}
+<h2>Edit Parish Priest</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="p_incharge">Priest in Charge</label>
+        <input type="text" class="form-control" id="p_incharge" name="p_incharge" value="{{ priest.p_incharge }}" required>
+    </div>
+    <div class="form-group">
+        <label for="tenure">Tenure</label>
+        <input type="text" class="form-control" id="tenure" name="tenure" value="{{ priest.tenure }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Parish Priest</button>
+</form>
+{% endblock %}

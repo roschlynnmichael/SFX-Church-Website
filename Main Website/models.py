@@ -45,3 +45,9 @@ class Annoucementcards(db.Model):
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.Text, nullable=False)
+
+class ParishPriests(db.Model):
+    __tablename__ = 'parish_priests'
+    p_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    p_incharge = db.Column(db.String(255), nullable=False)
+    tenure = db.Column(db.String(255), nullable=False)

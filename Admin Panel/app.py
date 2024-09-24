@@ -8,7 +8,7 @@ import pymysql
 import datetime
 import os
 from models import db, Annoucementcards, Admin, Masstimings, Novena, Weeklyannouncements, ParishEventUpdates
-from models import Association, Community
+from models import Association, Community, ParishPriests
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -387,6 +387,45 @@ def delete_community(Comm_No):
     flash('Community deleted successfully', 'success')
     return redirect(url_for('admin_communities'))
 
+@app.route('/admin/parish_priests')
+@login_required
+def admin_parish_priests():
+    priests = ParishPriests.query.all()
+    return render_template('admin_parish_priests.html', priests=priests)
+
+@app.route('/admin/add_parish_priest', methods=['GET', 'POST'])
+@login_required
+def add_parish_priest():
+    if request.method == 'POST':
+        p_incharge = request.form['p_incharge']
+        tenure = request.form['tenure']
+        new_priest = ParishPriests(p_incharge=p_incharge, tenure=tenure)
+        db.session.add(new_priest)
+        db.session.commit()
+        flash('New parish priest added successfully', 'success')
+        return redirect(url_for('admin_parish_priests'))
+    return render_template('add_parish_priest.html')
+
+@app.route('/admin/edit_parish_priest/<int:p_id>', methods=['GET', 'POST'])
+@login_required
+def edit_parish_priest(p_id):
+    priest = ParishPriests.query.get_or_404(p_id)
+    if request.method == 'POST':
+        priest.p_incharge = request.form['p_incharge']
+        priest.tenure = request.form['tenure']
+        db.session.commit()
+        flash('Parish priest updated successfully', 'success')
+        return redirect(url_for('admin_parish_priests'))
+    return render_template('edit_parish_priest.html', priest=priest)
+
+@app.route('/admin/delete_parish_priest/<int:p_id>')
+@login_required
+def delete_parish_priest(p_id):
+    priest = ParishPriests.query.get_or_404(p_id)
+    db.session.delete(priest)
+    db.session.commit()
+    flash('Parish priest deleted successfully', 'success')
+    return redirect(url_for('admin_parish_priests'))
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5002, debug = True)

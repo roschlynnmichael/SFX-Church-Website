@@ -3,7 +3,7 @@ from flask import Flask, render_template, url_for, send_from_directory
 import os
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Community, Association, Masstimings, Novena, Weeklyannouncements, ParishEventsUpdates
-from models import Annoucementcards
+from models import Annoucementcards, ParishPriests
 
 pymysql.install_as_MySQLdb()
 app = Flask(__name__, static_folder = 'design_files')
@@ -43,7 +43,8 @@ def parishinformationpage():
 
 @app.route("/previouspriests")
 def previouspriestspage():
-    return render_template("/webpages/previouspriests.html")
+    parish_priests = ParishPriests.query.all()
+    return render_template("/webpages/previouspriests.html", parish_priests = parish_priests)
 
 @app.route("/parishcouncil")
 def parishcouncilpage():

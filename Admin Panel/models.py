@@ -48,6 +48,14 @@ class Community(db.Model):
     Comm_Name = db.Column(db.String(255), nullable = False)
     Rep_Name = db.Column(db.String(255), nullable = False)
 
+class ParishPriests(db.Model):
+    __tablename__ = 'parish_priests'
+    p_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    p_incharge = db.Column(db.String(255), nullable = False)
+    tenure = db.Column(db.String(255), nullable = False)
+    def __repr__(self):
+        return f'<ParishPriests {self.p_incharge}>'
+
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin_user'
 

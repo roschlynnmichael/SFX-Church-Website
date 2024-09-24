@@ -168,7 +168,7 @@
                 <div class="card-scroll-container">
                     <div class="card-scroll">
                         {% for card in cards %}
-                        <div class="card announcement-card">
+                        <div class="card announcement-card image-card" data-image-url="{{ url_for('serve_upload', filename=card.image_url.split('/')[-1]) }}">
                             {% if card.image_url %}
                             <img src="{{ url_for('serve_upload', filename=card.image_url.split('/')[-1]) }}" class="card-img-top" alt="{{ card.title }}">
                             {% endif %}
@@ -285,11 +285,26 @@
         </div>
     </footer>
 
+    <div class="model fade" id="imageModel" tabindex="-1" aria-labelledby="imageModelLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title indie-font" id="imageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" class="img-fluid" id="modalImage" alt="Enlarged Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{{ url_for('static', filename='js/mdb.umd.min.js') }}"></script>
     <script src="{{ url_for('static', filename='custom_js/dropdown_menu.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="{{ url_for('static', filename='custom_js/custom_table.js')}}"></script>
-    
+    <script src="{{ url_for('static', filename='custom_js/image_card.js')}}"></script>
+
 </body>
 </html>

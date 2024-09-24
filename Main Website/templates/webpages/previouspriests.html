@@ -77,22 +77,25 @@
     </nav>
 
     <div class="container history-container">
-        <strong class="indie-font">Parish Information</strong>
-        <br>
-        <p class="indie-font">Baptism</p>
-        <p class="indie-font">Baptisms are held on Sundays after the 9.00 am mass. Parents have to meet the Parish Priest 6 months well in advance. Parents to attend the Pre-Baptism Course. God Parents to furnish their Baptism certificate & Pre-Baptism Course Certificate well in advance.</p>
-        <p class="indie-font">Reconciliation</p>
-        <p class="indie-font">The Priest is available on Saturdays from 6 pm to 7 pm and with prior appointment.</p>
-        <p class="indie-font">Communion</p>
-        <p class="indie-font">Once a year it’s held in our parish.</p>
-        <p class="indie-font">Confirmation</p>
-        <p class="indie-font">Once a year it's held on the last Sunday of January. (Depends on the availability of the Bishop)</p>
-        <p class="indie-font">Matrimony (Marriage)</p>
-        <p class="indie-font">Regarding marriage formalities, meet the priest on duty well in advance (at least 6 months before). Bring your latest Baptism Certificate (issued not more than six months prior).</p>
-        <p class="indie-font">Anointing of the Sick</p>
-        <p class="indie-font">Please call the Parish office or the Parish Priest on his mobile. Send someone to arrange to take the priest to the sick in hospital, nursing home, or home.</p>
-        <p class="indie-font">Burial</p>
-        <p class="indie-font">As soon as there is a death in a family, the family members or relatives have to contact the Parish Priest. He will guide you in the details of the mass and burial. We do not have our own graveyard. We have to first get permission from St. Joseph Cemetery. Copies of cause of Death Certificate from a Doctor and Burial permit from the Municipal Ward is a must.</p>
+        <h2 class="indie-font mb-4">Previous Parish Priests</h2>
+        <div class="table-responsive">
+            <table id="priestsTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th class="indie-font">Priest in Charge</th>
+                        <th class="indie-font">Tenure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for priest in parish_priests %}
+                    <tr>
+                        <td class="indie-font">{{ priest.p_incharge }}</td>
+                        <td class="indie-font">{{ priest.tenure }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <footer class="footer mt-auto py-3 bg-light">
