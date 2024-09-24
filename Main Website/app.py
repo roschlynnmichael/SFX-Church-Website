@@ -52,5 +52,9 @@ def parishcouncilpage():
     associations = Association.query.all()
     return render_template("/webpages/parishcouncil.html", communities=communities, associations=associations)
 
+@app.route("/parishgallery")
+def parishgallerypage():
+    return render_template("/webpages/parishgallery.html")
+
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 5001, debug = True)

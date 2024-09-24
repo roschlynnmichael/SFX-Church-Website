@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <span class="church-name">St. Francis Xavier Church</span>
@@ -75,92 +75,13 @@
         </div>
     </nav>
 
-    <div class="container-fluid py-4">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 col-xl-8">
-                <div class="card mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="indie-font mb-0">Parish Communities</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover" id="communityTable">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th class="indie-font">Community No</th>
-                                        <th class="indie-font">Community Name</th>
-                                        <th class="indie-font">Community Representative</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for community in communities %}
-                                    <tr>
-                                        <td class="indie-font">{{ community.Comm_No }}</td>
-                                        <td class="indie-font">{{ community.Comm_Name }}</td>
-                                        <td class="indie-font">{{ community.Rep_Name }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="indie-font mb-0">Religious Associations</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover" id="associationTable">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th class="indie-font">Association No</th>
-                                        <th class="indie-font">Association Name</th>
-                                        <th class="indie-font">Association Representative</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for association in associations %}
-                                    <tr>
-                                        <td class="indie-font">{{ association.Ass_No }}</td>
-                                        <td class="indie-font">{{ association.Ass_Name }}</td>
-                                        <td class="indie-font">{{ association.Rep_Name }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class="indie-font">Church Office Timings</h5>
-                    <p class="indie-font mb-0">Morning: 10AM to Noon</p>
-                    <p class="indie-font mb-0">Evening: 5:30PM to 6:45PM</p>
-                    <p class="indie-font mb-0">Closed on Sundays and Thursdays</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="indie-font mb-0">St.Francis Xavier Church</p>
-                    <p class="indie-font mb-0">Parksite, Vikroli (W)</p>
-                    <p class="indie-font mb-0">Mumbai - 400079</p>
-                    <p class="indie-font mb-0">Made with ❤️ by the Software Team</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <script src="{{ url_for('static', filename='js/mdb.umd.min.js') }}"></script>
     <script src="{{ url_for('static', filename='custom_js/dropdown_menu.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="{{ url_for('static', filename='custom_js/custom_table.js')}}"></script>
-    
+    <script src="{{ url_for('static', filename='custom_js/image_card.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
 </body>
 </html>
