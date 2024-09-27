@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='custom_css/custom_css_file.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Indie+Flower&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style>
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top">
@@ -75,6 +81,32 @@
         </div>
     </nav>
 
+    <div class="container mt-5 pt-5">
+        <h1 class="text-center mb-5 indie-font">Parish Gallery</h1>
+        <div class="row">
+            {% for gallery in galleries %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div id="carousel-{{ gallery.id }}" class="carousel slide" data-mdb-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for url in gallery.image_urls %}
+                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                <img src="{{ url }}" class="card-img-top" alt="{{ gallery.title }} image">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title indie-font">
+                            <a href="{{ gallery.link }}" target="_blank" class="text-decoration-none text-dark">{{ gallery.title }}</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <div class="row">
@@ -101,6 +133,7 @@
     <script src="{{ url_for('static', filename='custom_js/custom_table.js')}}"></script>
     <script src="{{ url_for('static', filename='custom_js/image_card.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+    <script src="{{ url_for('static', filename='custom_js/custom_gallery.js')}}"></script>
 
 </body>
 </html>
